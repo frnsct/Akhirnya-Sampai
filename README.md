@@ -233,7 +233,7 @@ tapi perayaan kecil atas bagaimana kau membuat dunia terasa lebih tenang.
 </div>
 
 <script>
-// user-provided spotify track (open on click)
+<script>
 const spotifyLink = "https://open.spotify.com/track/2x3vwXWuecPrRqgEUuSUJA?si=TtoMd6lsQWqItG8DqSEEcA";
 
 const playBtn = document.getElementById('playBtn');
@@ -242,28 +242,39 @@ const poem = document.getElementById('poem');
 const heroBg = document.getElementById('heroBg');
 const gallery = document.getElementById('gallery');
 
-playBtn.addEventListener('click', ()=>{
-  // reveal content with gentle animations
+playBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  // buka Spotify dulu (karena butuh interaksi langsung biar ga diblok)
+  window.open(spotifyLink, '_blank');
+
+  // tampilkan konten setelah jeda kecil biar animasi tetap smooth
   content.style.display = 'block';
-  setTimeout(()=>{
+
+  setTimeout(() => {
     poem.classList.add('fade-in');
   }, 300);
-  // animate gallery thumbnails sequentially
+
   const thumbs = Array.from(gallery.querySelectorAll('.thumb'));
-  thumbs.forEach((t,i)=>{
+  thumbs.forEach((t, i) => {
     t.style.opacity = 0;
     t.style.transform = 'translateY(8px)';
-    setTimeout(()=>{ t.style.opacity=1; t.style.transform='none'; t.style.transition='all .7s cubic-bezier(.2,.9,.3,1)'; }, 500 + i*260);
+    setTimeout(() => {
+      t.style.opacity = 1;
+      t.style.transform = 'none';
+      t.style.transition = 'all .7s cubic-bezier(.2,.9,.3,1)';
+    }, 400 + i * 200);
   });
 
-  // subtle transition on hero background - soften and show overlay
   heroBg.style.opacity = 0.24;
-  // open spotify link in new tab to let user play song (browsers block auto-play without interaction)
-  window.open(spotifyLink, '_blank');
 });
 
-// accessibility: allow keyboard enter on play button
-playBtn.addEventListener('keyup', (e)=>{ if(e.key==='Enter') playBtn.click(); });
+// accessibility: biar bisa tekan Enter juga
+playBtn.addEventListener('keyup', (e) => {
+  if (e.key === 'Enter') playBtn.click();
+});
+</script>
+
 
 </script>
 
