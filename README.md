@@ -221,10 +221,8 @@ html, body {
     <div class="poem" id="poem">
 Tujuh belas tahun kau menari dalam semesta,
 menyalakan lembut cahaya di tiap tapak langkahmu.
-
 Dunia barangkali tak pernah siap menyambut indahnya keberadaanmu,
 tapi aku—aku bersyukur semesta sempat mempertemukan kita.
-
 Hari ini bukan sekadar ulang tahunmu,
 tapi perayaan kecil atas bagaimana kau membuat dunia terasa lebih tenang.
     </div>
